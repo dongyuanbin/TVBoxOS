@@ -1,8 +1,8 @@
 name: Build TVBoxOS Debug APK
 on:
-  workflow_dispatch: # 支持网页手动点击触发
+  workflow_dispatch: # 网页手动点击触发
   push:
-    branches: [ main ] # push到main分支自动编译
+    branches: [ main ]
 
 jobs:
   build:
@@ -17,6 +17,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
+
+      # ==========新增：安装Android SDK并生成local.properties ==========
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
       - name: 赋予gradlew执行权限
         run: chmod +x gradlew
