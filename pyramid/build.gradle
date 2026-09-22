@@ -3,18 +3,16 @@ plugins {
     id 'com.chaquo.python'
 }
 
-// ==========在这里新增chaquopy配置，buildPython写这里==========
-chaquopy {
-    buildPython = "python3.8"
-}
-
 android {
     compileSdk 33
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
+
+        // buildPython 放到这里：defaultConfig内部，python{}外面
+        buildPython = "python3.8"
+
         python {
-         
             pip {
                 install "lxml"
                 install "ujson"
