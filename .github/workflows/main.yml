@@ -42,8 +42,11 @@ jobs:
       - name: Build Debug APK
         run: ./gradlew clean assemblePythonDebug
 
+      - name: List all apk files
+        run: find . -name "*.apk"
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: TVBoxOS-Full-APK
-          path: app/build/outputs/apk/python/debug/app-python-debug.apk
+          path: '**/build/outputs/apk/**/*.apk'
