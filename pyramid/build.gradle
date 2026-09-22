@@ -8,11 +8,10 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
-
-        // buildPython 放到这里：defaultConfig内部，python{}外面
-        buildPython = "python3.8"
-
         python {
+            // buildPython放在python{}里面！
+            buildPython "python3.8"
+
             pip {
                 install "lxml"
                 install "ujson"
