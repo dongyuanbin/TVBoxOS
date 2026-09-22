@@ -3,9 +3,13 @@ plugins {
     id 'com.chaquo.python'
 }
 
+// ==========在这里新增chaquopy配置，buildPython写这里==========
+chaquopy {
+    buildPython = "python3.8"
+}
+
 android {
     compileSdk 33
-
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
@@ -23,7 +27,6 @@ android {
             }
         }
     }
-
     flavorDimensions "mode"
     productFlavors {
         python {
@@ -45,7 +48,6 @@ android {
             }
         }
     }
-
     buildTypes {
         debug {
         }
@@ -58,7 +60,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     sourceSets {
         main{
             // Android代码模块
@@ -69,7 +70,5 @@ android {
     }
     buildToolsVersion '30.0.3'
 }
-
 dependencies {
-
 }
